@@ -1,6 +1,6 @@
 #!/bin/sh
 
-rm component-*/*
+rm component-*/*  2> /dev/null
 rm -rf thumbnails/* 2> /dev/null
 
 cp index.html.1 index.html
@@ -20,10 +20,11 @@ done
 
 cat index.html.2 >> index.html
 
-vulcanize index.html
+vulcanize index.html 2> /dev/null
 
 mkdir -p ~/projects/mozilla-appmaker/appmaker/public/bundles/components
 rm -rf ~/projects/mozilla-appmaker/appmaker/public/bundles/components/*
 mv thumbnails/* ~/projects/mozilla-appmaker/appmaker/public/bundles/components/
 cp vulcanized.html ~/projects/mozilla-appmaker/appmaker/public/bundles/components/mozilla-appmaker.html
+echo "Copied bundle to ~/projects/mozilla-appmaker/appmaker/public/bundles/components/mozilla-appmaker.html"
 
